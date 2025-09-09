@@ -30,7 +30,7 @@ class FirstFragment : Fragment() {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             }
             "createWorkout" -> {
-                // TODO: Navigate or perform action for creating a workout
+                findNavController().navigate(R.id.action_FirstFragment_to_CreateNewWorkout)
             }
             "viewWorkouts" -> {
                 // TODO: Navigate or perform action for viewing workouts

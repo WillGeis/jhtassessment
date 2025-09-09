@@ -10,9 +10,15 @@
         android:name="com.example.jhtassessment.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
+
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
+        <!-- NEW ACTION to CreateNewWorkout fragment -->
+        <action
+            android:id="@+id/action_FirstFragment_to_CreateNewWorkout"
+            app:destination="@id/CreateNewWorkoutFragment" />
     </fragment>
 
     <fragment
@@ -25,4 +31,10 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/CreateNewWorkoutFragment"
+        android:name="com.example.jhtassessment.CreateNewWorkout"
+        android:label="Create New Workout"
+        tools:layout="@layout/fragment_pick_exercises_adapter" />
 </navigation>
