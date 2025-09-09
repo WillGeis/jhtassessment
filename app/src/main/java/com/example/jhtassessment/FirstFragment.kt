@@ -5,36 +5,46 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentFirstBinding
 
 /**
- * A simple [Fragment] subclass as the default destination in the navigation.
+ * Fragment for Landing Page
  */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        // Button Handler
+        fun handleButtonClick(action: String) {
+            when (action) {
+                "viewExercises" -> {
+                    // TODO: Navigate or perform action for viewing exercises
+                }
+                "createWorkout" -> {
+                    // TODO: Navigate or perform action for creating a workout
+                }
+                "viewWorkouts" -> {
+                    // TODO: Navigate or perform action for viewing workouts
+                }
+            }
         }
+
+        // Set button listeners
+        binding.viewExcercises.setOnClickListener { handleButtonClick("viewExercises") }
+        binding.createButton.setOnClickListener { handleButtonClick("createWorkout") }
+        binding.viewWorkouts.setOnClickListener { handleButtonClick("viewWorkouts") }
     }
 
     override fun onDestroyView() {

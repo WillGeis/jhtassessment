@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JHTAssessment">
         <activity
+            android:name=".ExercisesAdapter"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.JHTAssessment">
