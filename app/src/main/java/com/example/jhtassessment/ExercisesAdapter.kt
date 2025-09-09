@@ -5,32 +5,39 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jhtassessment.databinding.ItemExerciseBinding
 
+/**
+ * Adapter for the exercises in the recycler view
+ */
 class ExercisesAdapter(private val exercises: List<Exercise>) :
     RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
 
+    var onItemClick: ((Exercise) -> Unit)? = null
+
     class ExerciseViewHolder(val binding: ItemExerciseBinding) : RecyclerView.ViewHolder(binding.root)
 
+    /**
+     * on create view
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExerciseViewHolder {
         val binding = ItemExerciseBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ExerciseViewHolder(binding)
     }
 
+    /**
+     * Text binder
+     */
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val exercise = exercises[position]
 
-        // Safely handle nulls and show placeholder text
-        holder.binding.nameTextView.text = exercise.name ?: "Unnamed Exercise"
-
-        // Build description from available fields
-        val descriptionParts = mutableListOf<String>()
-        exercise.equipment?.let { descriptionParts.add("Equipment: $it") }
-        exercise.duration?.let { descriptionParts.add("Duration: $it min") }
-        exercise.difficulty?.let { descriptionParts.add("Difficulty: $it") }
-
+        holder.binding.nameTextView.text = exercise.name ?: "Unknown"
         holder.binding.descriptionTextView.text =
-            if (descriptionParts.isNotEmpty()) descriptionParts.joinToString(", ")
-            else "No details available"
+            "Equipment: ${exercise.equipment ?: "N/A"}, Duration: ${exercise.duration ?: "N/A"} min, Difficulty: ${exercise.difficulty ?: "N/A"}" // probably not the best way to implement TODO: change this
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(exercise)
+        }
     }
 
-    override fun getItemCount() = exercises.size
+    override fun getItemCount(): Int = exercises.size // item counter
 }
+

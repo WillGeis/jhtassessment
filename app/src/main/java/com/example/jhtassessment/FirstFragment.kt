@@ -9,13 +9,16 @@ import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentFirstBinding
 
 /**
- * Fragment for Landing Page
+ * Landing Page Fragment
  */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
 
+    /**
+     * Layout inflater initial
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +27,10 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * Handles the main button click
+     * Expandable if more buttons are needed <--- This is part of the Scalable code
+     */
     fun handleButtonClick(action: String) {
         when (action) {
             "viewExercises" -> {
@@ -32,13 +39,19 @@ class FirstFragment : Fragment() {
         }
     }
 
+    /**
+     * View Creator
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Set button listeners
+        // Button listeners
         binding.viewExercises.setOnClickListener { handleButtonClick("viewExercises") }
     }
 
+    /**
+     * View Destroyer
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

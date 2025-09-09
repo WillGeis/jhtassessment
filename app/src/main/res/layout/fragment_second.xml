@@ -7,7 +7,7 @@
     android:padding="16dp"
     tools:context=".SecondFragment">
 
-    <!-- Top Button -->
+    <!-- "Back" button -->
     <Button
         android:id="@+id/button_second"
         style="@style/Widget.MaterialComponents.Button"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- RecyclerView filling remaining space below the button -->
+    <!-- Recycler View for exercises -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exercises_list"
         android:layout_width="0dp"

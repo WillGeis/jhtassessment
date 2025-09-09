@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Header -->
+        <!-- Header for company name -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,12 +23,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintVertical_chainStyle="packed"/>
-        <!-- View Exercises Button -->
+
+        <!-- "View Workout List" button -->
         <Button
             android:id="@+id/view_exercises"
             style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="320dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -39,9 +42,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
-
-
-        <!-- View Workouts Button -->
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

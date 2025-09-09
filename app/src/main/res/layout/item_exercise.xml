@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
+    <!-- Name -->
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="0dp"
@@ -17,6 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Description -->
     <TextView
         android:id="@+id/descriptionTextView"
         android:layout_width="0dp"

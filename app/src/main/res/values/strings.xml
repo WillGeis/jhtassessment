@@ -1,5 +1,4 @@
 <resources>
-    <!-- TODO ADD COMMENTS -->
     <string name="landingpageviewworkout">View Workout List</string>
     <string name="landingpagecreatenewworkout">Create New Workout</string>
     <string name="landingpageviewuserworkouts">View Your Workouts</string>
@@ -11,6 +10,5 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="app_name">JHTAssessment</string>
     <string name="action_settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save_button">Save</string>
 </resources>

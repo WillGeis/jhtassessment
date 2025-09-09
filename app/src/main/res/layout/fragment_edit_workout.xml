@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Text box area -->
+    <!-- TODO: do not hardcode hints put it in strings -->
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name" />
+    <EditText
+        android:id="@+id/edit_equipment"
+        android:hint="Equipment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edit_duration"
+        android:hint="Duration (min)"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/edit_difficulty"
+        android:hint="Difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- button area -->
+    <Button
+        android:id="@+id/save_button"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_height="80dp"
+        app:cornerRadius="10dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/save_button"/>
+    <Button
+        android:id="@+id/back_button"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/previous"
+        app:cornerRadius="10dp"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/save_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</LinearLayout>

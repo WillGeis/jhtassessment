@@ -5,28 +5,48 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/FirstFragment">
 
+    <!-- First Fragment -->
     <fragment
         android:id="@+id/FirstFragment"
         android:name="com.example.jhtassessment.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
+        <!-- Navigate to SecondFragment -->
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
-
-        <!-- NEW ACTION to CreateNewWorkout fragment -->
     </fragment>
 
+    <!-- Second Fragment -->
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.jhtassessment.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
+        <!-- Back to FirstFragment -->
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+
+        <!-- Navigate to EditWorkoutFragment -->
+        <action
+            android:id="@+id/action_SecondFragment_to_EditWorkoutFragment"
+            app:destination="@id/EditWorkoutFragment" />
     </fragment>
 
+    <!-- Edit Workout Fragment -->
+    <fragment
+        android:id="@+id/EditWorkoutFragment"
+        android:name="com.example.jhtassessment.EditWorkoutFragment"
+        android:label="Edit Workout"
+        tools:layout="@layout/fragment_edit_workout">
+
+        <!-- Navigate to SecondFragment -->
+        <action
+            android:id="@+id/action_EditFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+        />
+    </fragment>
 </navigation>

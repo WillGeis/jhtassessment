@@ -13,7 +13,8 @@
         android:theme="@style/Theme.JHTAssessment">
         <activity
             android:name=".ExercisesAdapter"
-            android:exported="false" />
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
