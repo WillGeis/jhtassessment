@@ -29,12 +29,6 @@ class FirstFragment : Fragment() {
             "viewExercises" -> {
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             }
-            "createWorkout" -> {
-                findNavController().navigate(R.id.action_FirstFragment_to_CreateNewWorkout)
-            }
-            "viewWorkouts" -> {
-                // TODO: Navigate or perform action for viewing workouts
-            }
         }
     }
 
@@ -43,8 +37,6 @@ class FirstFragment : Fragment() {
 
         // Set button listeners
         binding.viewExercises.setOnClickListener { handleButtonClick("viewExercises") }
-        binding.createButton.setOnClickListener { handleButtonClick("createWorkout") }
-        binding.viewWorkouts.setOnClickListener { handleButtonClick("viewWorkouts") }
     }
 
     override fun onDestroyView() {
