@@ -5,8 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jhtassessment.databinding.ItemExerciseBinding
 
-data class Exercise(val name: String, val description: String)
-
 class ExercisesAdapter(private val exercises: List<Exercise>) :
     RecyclerView.Adapter<ExercisesAdapter.ExerciseViewHolder>() {
 
@@ -19,8 +17,19 @@ class ExercisesAdapter(private val exercises: List<Exercise>) :
 
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val exercise = exercises[position]
-        holder.binding.nameTextView.text = exercise.name
-        holder.binding.descriptionTextView.text = exercise.description
+
+        // Safely handle nulls and show placeholder text
+        holder.binding.nameTextView.text = exercise.name ?: "Unnamed Exercise"
+
+        // Build description from available fields
+        val descriptionParts = mutableListOf<String>()
+        exercise.equipment?.let { descriptionParts.add("Equipment: $it") }
+        exercise.duration?.let { descriptionParts.add("Duration: $it min") }
+        exercise.difficulty?.let { descriptionParts.add("Difficulty: $it") }
+
+        holder.binding.descriptionTextView.text =
+            if (descriptionParts.isNotEmpty()) descriptionParts.joinToString(", ")
+            else "No details available"
     }
 
     override fun getItemCount() = exercises.size

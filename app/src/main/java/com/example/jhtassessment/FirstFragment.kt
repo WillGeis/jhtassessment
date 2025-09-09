@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentFirstBinding
 
 /**
@@ -23,26 +24,25 @@ class FirstFragment : Fragment() {
         return binding.root
     }
 
+    fun handleButtonClick(action: String) {
+        when (action) {
+            "viewExercises" -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            }
+            "createWorkout" -> {
+                // TODO: Navigate or perform action for creating a workout
+            }
+            "viewWorkouts" -> {
+                // TODO: Navigate or perform action for viewing workouts
+            }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Button Handler
-        fun handleButtonClick(action: String) {
-            when (action) {
-                "viewExercises" -> {
-                    // TODO: Navigate or perform action for viewing exercises
-                }
-                "createWorkout" -> {
-                    // TODO: Navigate or perform action for creating a workout
-                }
-                "viewWorkouts" -> {
-                    // TODO: Navigate or perform action for viewing workouts
-                }
-            }
-        }
-
         // Set button listeners
-        binding.viewExcercises.setOnClickListener { handleButtonClick("viewExercises") }
+        binding.viewExercises.setOnClickListener { handleButtonClick("viewExercises") }
         binding.createButton.setOnClickListener { handleButtonClick("createWorkout") }
         binding.viewWorkouts.setOnClickListener { handleButtonClick("viewWorkouts") }
     }
