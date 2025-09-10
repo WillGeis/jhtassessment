@@ -12,19 +12,22 @@
         android:padding="16dp">
 
         <!-- Header for company name -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/landing_page_header"
-            android:textSize="30sp"
-            android:gravity="center_horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/view_exercises"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"/>
 
         <!-- "View Workout List" button -->
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="172dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/landing_page_header"
+            android:scaleType="fitCenter"
+            android:src="@drawable/jhtlogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/view_exercises"
             style="@style/Widget.MaterialComponents.Button"
@@ -32,7 +35,7 @@
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="320dp"
+            android:layout_marginTop="32dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="@string/landing_page_view_workout"
@@ -40,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_logo"
             app:layout_constraintVertical_chainStyle="packed" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentEditWorkoutBinding
@@ -37,11 +38,20 @@ class EditWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val difficultyOptions = arrayOf("Difficulty", "Beginner", "Intermediate", "Advanced")
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, difficultyOptions)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.editDifficulty.adapter = adapter
+
         arguments?.let {
             binding.editName.setText(it.getString("name"))
             binding.editEquipment.setText(it.getString("equipment"))
             binding.editDuration.setText(it.getInt("duration").toString())
-            binding.editDifficulty.setText(it.getString("difficulty"))
+            val diff = it.getString("difficulty")
+            if (diff != null) {
+                val index = difficultyOptions.indexOf(diff)
+                if (index >= 0) binding.editDifficulty.setSelection(index)
+            }
             exerciseId = it.getString("id") ?: ""
         }
 
@@ -51,7 +61,7 @@ class EditWorkoutFragment : Fragment() {
                 id = exerciseId,
                 equipment = binding.editEquipment.text.toString(),
                 duration = binding.editDuration.text.toString().toIntOrNull(),
-                difficulty = binding.editDifficulty.text.toString()
+                difficulty = binding.editDifficulty.selectedItem.toString()
             )
             saveExercise(updatedExercise)
             Toast.makeText(requireContext(), "Workout updated!", Toast.LENGTH_SHORT).show()

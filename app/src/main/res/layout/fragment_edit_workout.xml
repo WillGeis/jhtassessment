@@ -13,28 +13,38 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:autofillHints="@string/name"
-        android:hint="@string/name" />
+        android:hint="@string/name"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
     <EditText
         android:id="@+id/edit_equipment"
         android:hint="@string/equipment"
         android:autofillHints="@string/equipment"
         android:layout_width="match_parent"
         android:inputType="text"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
     <EditText
         android:id="@+id/edit_duration"
         android:autofillHints="@string/duration_min"
         android:hint="@string/duration_min"
         android:inputType="number"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <EditText
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"/>
+
+    <!-- difficulty dropdown -->
+    <Spinner
         android:id="@+id/edit_difficulty"
-        android:autofillHints="@string/difficulty"
-        android:hint="@string/difficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:spinnerMode="dropdown"
+        android:backgroundTint="#FFFFFF"
+        android:popupBackground="#211e1f"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="16dp"/>
 
     <!-- button area -->
     <Button
@@ -58,8 +68,5 @@
         android:layout_marginBottom="16dp"
         android:text="@string/previous"
         app:cornerRadius="10dp"
-        android:gravity="center"
-        app:layout_constraintTop_toTopOf="@id/save_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:gravity="center"/>
 </LinearLayout>
