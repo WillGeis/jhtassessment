@@ -8,19 +8,22 @@
     tools:context=".SecondFragment">
 
     <!-- "Back" button -->
+
+    <!-- Recycler View for exercises -->
+
     <Button
         android:id="@+id/button_second"
         style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="48dp"
         android:text="@string/previous"
         app:cornerRadius="10dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Recycler View for exercises -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exercises_list"
         android:layout_width="0dp"

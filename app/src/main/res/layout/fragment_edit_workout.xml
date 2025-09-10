@@ -14,6 +14,7 @@
         android:inputType="text"
         android:autofillHints="@string/name"
         android:hint="@string/name"
+        android:layout_marginTop="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"/>
     <EditText
@@ -39,11 +40,12 @@
     <Spinner
         android:id="@+id/edit_difficulty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:spinnerMode="dropdown"
         android:backgroundTint="#FFFFFF"
         android:popupBackground="#211e1f"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:layout_marginBottom="16dp"/>
 
     <!-- button area -->
