@@ -70,6 +70,7 @@ class EditWorkoutFragment : Fragment() {
         val jsonString = file.bufferedReader().use { it.readText() }
         val cleanedJson = jsonString.replace(Regex(",\\s*([}\\]])"), "$1")
         val jsonArray = org.json.JSONArray(cleanedJson)
+        var found = false
         for (i in 0 until jsonArray.length()) {
             val obj = jsonArray.getJSONObject(i)
             if (obj.optString("id") == updated.id) {
@@ -77,8 +78,18 @@ class EditWorkoutFragment : Fragment() {
                 obj.put("equipment", updated.equipment)
                 obj.put("duration", updated.duration)
                 obj.put("difficulty", updated.difficulty)
+                found = true
                 break
             }
+        }
+        if (!found) { // added new workout adding for extra functionality (newObj vs obj)
+            val newObj = org.json.JSONObject()
+            newObj.put("name", updated.name)
+            newObj.put("id", updated.id)
+            newObj.put("equipment", updated.equipment)
+            newObj.put("duration", updated.duration)
+            newObj.put("difficulty", updated.difficulty)
+            jsonArray.put(newObj)
         }
         file.writeText(jsonArray.toString())
     }
