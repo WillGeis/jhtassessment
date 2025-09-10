@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentSecondBinding
+import java.io.File
 
 /**
- * Main Scrolling Page //TODO add scaling (add to json)
+ * Main Scrolling Page
  */
 class SecondFragment : Fragment() {
     private var _binding: FragmentSecondBinding? = null
@@ -33,45 +34,68 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonSecond.setOnClickListener { // Button
+        binding.buttonSecond.setOnClickListener { // back button
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
-        val exercises = parseExercisesJson("workouts.json") // Call .json Loader
+        binding.addExerciseFab.setOnClickListener { // add button
+            val bundle = Bundle().apply {
+                // empty values being filled
+                putString("name", "")
+                putString("id", System.currentTimeMillis().toString())
+                putString("equipment", "")
+                putInt("duration", 0)
+                putString("difficulty", "")
+            }
+            findNavController().navigate(R.id.action_SecondFragment_to_EditWorkoutFragment, bundle)
+        }
 
-        val adapter = ExercisesAdapter(exercises).apply { // RecyclerView w/ listener for editing
+        val exercises = parseExercisesJson("workouts.json")
+
+        val adapter = ExercisesAdapter(exercises).apply {
             onItemClick = { exercise ->
                 openEditWorkoutFragment(exercise)
             }
         }
 
-        // Binders <-- Scalable
         binding.exercisesList.layoutManager = LinearLayoutManager(requireContext())
         binding.exercisesList.adapter = adapter
     }
 
     /**
-     * .json loader to read as text as .json provided is messy and has trailing commas etc
+     * opens asset workouts.json then copies the output into it
      */
-    private fun loadJsonFromAssets(fileName: String): String {
-        return requireContext().assets.open(fileName).bufferedReader().use { it.readText() }
+    private fun getLocalJsonFile(): File {
+        val file = File(requireContext().filesDir, "workouts.json")
+        if (!file.exists()) {
+            requireContext().assets.open("workouts.json").use { input ->
+                file.outputStream().use { output ->
+                    input.copyTo(output)
+                }
+            }
+        }
+        return file
+    }
+
+    /**
+     * loads the workouts.json into the file value
+     */
+    private fun loadJsonFromLocal(): String {
+        val file = getLocalJsonFile()
+        return file.bufferedReader().use { it.readText() }
     }
 
     /**
      * .json parser for messy .jsons passed in with error handling and such
      */
     private fun parseExercisesJson(fileName: String): List<Exercise> {
-        val jsonString = loadJsonFromAssets(fileName)
+        val jsonString = loadJsonFromLocal()
         val exercises = mutableListOf<Exercise>()
-
-        // Removes trailing commas inside objects
         val cleanedJson = jsonString.replace(Regex(",\\s*([}\\]])"), "$1")
-
-        val jsonArray = org.json.JSONArray(cleanedJson) // Build .json array that has been cleaned
-
-        for (i in 0 until jsonArray.length()) { // .json iterator
+        val jsonArray = org.json.JSONArray(cleanedJson)
+        for (i in 0 until jsonArray.length()) {
             val obj = jsonArray.getJSONObject(i)
-            exercises.add( // Adds Exercise data structure to the array
+            exercises.add(
                 Exercise(
                     name = obj.optString("name", null),
                     id = obj.optString("id", null),
@@ -117,4 +141,3 @@ data class Exercise(
     val duration: Int?,
     val difficulty: String?
 )
-

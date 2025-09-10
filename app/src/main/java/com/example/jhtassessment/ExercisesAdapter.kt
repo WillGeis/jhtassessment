@@ -1,5 +1,6 @@
 package com.example.jhtassessment
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,12 +27,13 @@ class ExercisesAdapter(private val exercises: List<Exercise>) :
     /**
      * Text binder
      */
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val exercise = exercises[position]
 
         holder.binding.nameTextView.text = exercise.name ?: "Unknown"
         holder.binding.descriptionTextView.text =
-            "Equipment: ${exercise.equipment ?: "N/A"}, Duration: ${exercise.duration ?: "N/A"} min, Difficulty: ${exercise.difficulty ?: "N/A"}" // probably not the best way to implement TODO: change this
+            "Equipment: ${exercise.equipment ?: "N/A"}, Duration: ${exercise.duration ?: "N/A"} min, Difficulty: ${exercise.difficulty ?: "N/A"}" // probably not the best way to implement but I suppressed the warnings
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(exercise)

@@ -1,9 +1,6 @@
 <resources>
-    <string name="landingpageviewworkout">View Workout List</string>
-    <string name="landingpagecreatenewworkout">Create New Workout</string>
-    <string name="landingpageviewuserworkouts">View Your Workouts</string>
-    <string name="viewpageedituserworkouts">Edit Workout</string>
-    <string name="landingpageheader">Johnson Health Tech Workout Explorer</string>
+    <string name="landing_page_view_workout">View Workout List</string>
+    <string name="landing_page_header">Johnson Health Tech Workout Explorer</string>
     <string name="next">Next</string>
     <string name="previous">Back</string>
     <string name="first_fragment_label">First Fragment</string>
@@ -11,4 +8,11 @@
     <string name="app_name">JHTAssessment</string>
     <string name="action_settings">Settings</string>
     <string name="save_button">Save</string>
+    <string name="add_exercise">Add</string>
+    <string name="name">Name</string>
+    <string name="equipment">Equipment</string>
+    <string name="duration_min">Duration (min)</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="exercise_name">Exercise Name</string>
+    <string name="exercise_description">Exercise Description</string>
 </resources>

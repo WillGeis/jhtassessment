@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.jhtassessment.databinding.FragmentEditWorkoutBinding
+import java.io.File
 
 /**
  * Allows for direct editing of exercises from the .json put into the recyclerview
  */
-class EditWorkoutFragment : Fragment() { // TODO: edits actually need to work
+class EditWorkoutFragment : Fragment() {
 
     private var _binding: FragmentEditWorkoutBinding? = null
     private val binding get() = _binding!!
@@ -36,7 +37,6 @@ class EditWorkoutFragment : Fragment() { // TODO: edits actually need to work
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Retrieve exercise data from recycler
         arguments?.let {
             binding.editName.setText(it.getString("name"))
             binding.editEquipment.setText(it.getString("equipment"))
@@ -45,14 +45,42 @@ class EditWorkoutFragment : Fragment() { // TODO: edits actually need to work
             exerciseId = it.getString("id") ?: ""
         }
 
-        // Button area, scalable
         binding.saveButton.setOnClickListener {
+            val updatedExercise = Exercise(
+                name = binding.editName.text.toString(),
+                id = exerciseId,
+                equipment = binding.editEquipment.text.toString(),
+                duration = binding.editDuration.text.toString().toIntOrNull(),
+                difficulty = binding.editDifficulty.text.toString()
+            )
+            saveExercise(updatedExercise)
             Toast.makeText(requireContext(), "Workout updated!", Toast.LENGTH_SHORT).show()
-            requireActivity().onBackPressed() // probably should be set up in nav graph, but this works
+            findNavController().popBackStack()
         }
         binding.backButton.setOnClickListener {
             findNavController().navigate(R.id.action_EditFragment_to_SecondFragment)
         }
+    }
+
+    /**
+     * places new object values stored in updated exercises data type into the json array
+     */
+    private fun saveExercise(updated: Exercise) {
+        val file = File(requireContext().filesDir, "workouts.json")
+        val jsonString = file.bufferedReader().use { it.readText() }
+        val cleanedJson = jsonString.replace(Regex(",\\s*([}\\]])"), "$1")
+        val jsonArray = org.json.JSONArray(cleanedJson)
+        for (i in 0 until jsonArray.length()) {
+            val obj = jsonArray.getJSONObject(i)
+            if (obj.optString("id") == updated.id) {
+                obj.put("name", updated.name)
+                obj.put("equipment", updated.equipment)
+                obj.put("duration", updated.duration)
+                obj.put("difficulty", updated.difficulty)
+                break
+            }
+        }
+        file.writeText(jsonArray.toString())
     }
 
     /**

@@ -7,28 +7,34 @@
     android:layout_height="match_parent">
 
     <!-- Text box area -->
-    <!-- TODO: do not hardcode hints put it in strings -->
     <EditText
         android:id="@+id/edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name" />
+        android:inputType="text"
+        android:autofillHints="@string/name"
+        android:hint="@string/name" />
     <EditText
         android:id="@+id/edit_equipment"
-        android:hint="Equipment"
+        android:hint="@string/equipment"
+        android:autofillHints="@string/equipment"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/edit_duration"
-        android:hint="Duration (min)"
+        android:autofillHints="@string/duration_min"
+        android:hint="@string/duration_min"
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/edit_difficulty"
-        android:hint="Difficulty"
+        android:autofillHints="@string/difficulty"
+        android:hint="@string/difficulty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:inputType="text" />
 
     <!-- button area -->
     <Button
