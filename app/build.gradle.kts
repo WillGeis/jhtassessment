@@ -39,6 +39,7 @@ android {
 }
 
 dependencies {
+    // Functionality
     implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -48,7 +49,19 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation("com.google.firebase:firebase-crashlytics-ktx:18.6.1")
     implementation("androidx.activity:activity-ktx:1.9.3")
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // Fragment testing
+    debugImplementation("androidx.fragment:fragment-testing:1.6.1")
+    debugImplementation("androidx.fragment:fragment-testing:1.6.1")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.mockito:mockito-core:5.5.0")
+
+
+    // UI tests
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.6")
 }

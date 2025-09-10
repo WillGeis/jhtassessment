@@ -38,6 +38,7 @@ class EditWorkoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Spinner for difficulty because text box is not good
         val difficultyOptions = arrayOf("Difficulty", "Beginner", "Intermediate", "Advanced")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, difficultyOptions)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
